@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id ='pie' style="width: 500px;height:300px;" ></div>
+    <div id ='bar' style="width: 500px;height:500px;"showYAxisLine="false" showXAxisLine='false' titletext="adsf" subtitletext="daf"></div>
+    <div id ='bar1' style="width: 500px;height:500px;"barWidth='10'showYAxisLine="false" showXAxisLine='false' titletext="adsf" subtitletext="daf"></div>
+    <div id ='bar2' style="width: 500px;height:500px;" titletext="adsf" subtitletext="daf"></div>
+    <div id ='pie1' style="width: 500px;height:300px;" radiusType="40%,50%" subtitletext="211" islegend = "true" istoolbox = 'true' orienttype="horizontal"guideLineLength1 = "15" guideLineSmooth="true"></div>
+    <div id ='lines' style="width: 500px;height:300px;" showMaxMinNumber="false" grid="10%,10%,20%,30%"></div>
+    <div id ='map' style="width: 1000px;height:1000px;" titletext="111" subtitletext="222"></div>
+</body>
+<script src="./js/jquery-3.4.1.js"></script>
+<script src="./js/echarts4.min.js"></script>
+<script src="./js/china.js"></script>
+<script src="./js/echarts-reBuild.js"></script>
+<script>
+    //显示图标需在rebuild.js中模拟ajax返回值
+    EchartsPieRing('pie')
+    EchartsPieRing('pie1')
+    EchartsBar('bar','transverse')
+    EchartsBar('bar1','transverseCascade')
+    EchartsBar('bar2','bar')
+    EchartsLine('lines','doubleYLines')
+
+    getEchartsMap('map','fujian',3000,
+            function (params, ticket, callback) {
+                //params 当前选中的省
+                var returnStr = params.name + '<br>e-Link设备数：' + params.value;
+                return returnStr;
+            }
+    )
+</script>
+</html>
