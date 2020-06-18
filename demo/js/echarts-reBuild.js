@@ -1698,10 +1698,13 @@ function echars_new(id, url, type) {
     }
     e_ajax(url, id)
     if (type === 'pie') {
-        EchartsPieRing(id)
-    } else if (type === 'bar' || type === 'verticalCascade' || type === 'transverseCascade' || type === 'transverse') { }
-    EchartsBar(id, type)
-
+        EchartsPieRing(id,callback=null)
+    }
+    if (type === 'bar' || type === 'verticalCascade' || type === 'transverseCascade' || type === 'transverse') { }
+    EchartsBar(id, type,callback=null)
+    if(type ==='doubleYLines' || type==='line' || type ==='line'){
+        EchartsLine(id,type,callback=null)
+    }
 }
 
 
@@ -1757,7 +1760,7 @@ ajaxdata格式
 
 
 
-function EchartsPieRing(id) {
+function EchartsPieRing(id,callback=null) {
     var myChart = echarts.init(document.getElementById(id));
     var ajaxdata = r_data[id];
     var legendData = []
@@ -1883,7 +1886,7 @@ function EchartsPieRing(id) {
         tooltip: {
             show: istooltip,
             trigger: 'item',
-            formatter: "{b} : {c} ({d}%)",
+            formatter: callback,
             confine: true
         },
         legend: {
@@ -2095,7 +2098,7 @@ function getPieColor1(dataIndex) {
 	}
  */
 
-function EchartsBar(id, type) {
+function EchartsBar(id, type,callback=null) {
     var myChart = echarts.init(document.getElementById(id))
     var xAxisData = r_data[id].xAxisData;
     var legendData = r_data[id].legendData
@@ -2208,6 +2211,7 @@ function EchartsBar(id, type) {
                 // 	}
                 // 	return returnStr;
                 // },
+                formatter:callback,
                 axisPointer: {
                     type: 'shadow'
                 },
@@ -2281,15 +2285,16 @@ function EchartsBar(id, type) {
             tooltip: {
                 show: istooltip,
                 trigger: 'axis',
-                formatter: function (params, ticket, callback) {
-                    var returnStr = r_data[id].title;
-                    for (var i = 0; i < params.length; i++) {
-                        if (params[i].value != 0) {
-                            returnStr += "<br>" + params[i].seriesName + "：" + params[i].value;
-                        }
-                    }
-                    return returnStr;
-                },
+                // formatter: function (params, ticket, callback) {
+                //     var returnStr = r_data[id].title;
+                //     for (var i = 0; i < params.length; i++) {
+                //         if (params[i].value != 0) {
+                //             returnStr += "<br>" + params[i].seriesName + "：" + params[i].value;
+                //         }
+                //     }
+                //     return returnStr;
+                // },
+                formatter:callback,
                 axisPointer: {
                     type: 'shadow'
                 },
@@ -2351,7 +2356,8 @@ function EchartsBar(id, type) {
                 axisPointer: {
                     type: 'shadow'
                 },
-                confine: true
+                confine: true,
+                formatter:callback
             },
             // grid: {
             // 	left: '3%',
@@ -2460,7 +2466,8 @@ function EchartsBar(id, type) {
                 trigger: 'axis',
                 axisPointer: {
                     type: 'shadow'
-                }
+                },
+                formatter:callback
             },
             // grid: {
             // 	left: '5%',
@@ -2673,7 +2680,7 @@ doubleYLines 双Y轴折线图
 	 	}
  */
 
-function EchartsLine(id, type) {
+function EchartsLine(id, type,callback=null) {
     var myChart = echarts.init(document.getElementById(id));
     var legendData = r_data[id].legendData;
     var xAxisData = r_data[id].xAxisData;
@@ -2766,7 +2773,8 @@ function EchartsLine(id, type) {
             show: istooltip,
             trigger: 'item',
             // formatter: "{b} : {c} ({d}%)",
-            confine: true
+            confine: true,
+            formatter:callback
         },
         legend: {
             show: islegend,
