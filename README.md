@@ -1,18 +1,18 @@
-＃echarts_secondary_packaging
+### ajax调用
 ```
-1.此文件依赖jquery和echarts.min.js。顺序为echarts.js为先，rebuid.js为后。
-2.其中各个参数的修改都为直接添加自定义属性来修改。
-3.其中定义了预期数据值的格式。不要随意修改。
-4.map文件夹为地图省份文件夹，按需加载。
+echars_new(id, url, type,callback)
+1.id div ID
+2.url 后台url
+3.type echarts组件类型（如 line lines bar 等）
+4.callback echarts弹层 为一个函数,默认值为null
 ```
-
-### 环形图/饼状图文档
-
+### 环形图/饼状图文档（ID为必传值）
 
 ``
-函数调用 EchartsPieRing（id,type）
+函数调用 EchartsPieRing（id,type,callback=null）
 id:divID
 type:选择图表类型,饼图type为'pie' 
+callback:echarts弹层 为一个函数 默认值为null
 ``
 ```
 后台返回的值格式参照：
@@ -30,86 +30,88 @@ type:选择图表类型,饼图type为'pie'
 
 ```
 ```
-2.roseType = 'radius' （此参数可直接在当前div中当做自定义参数写入）
+2.roseType = 'radius'  
 说明： 将饼图变为3D饼图 
 ```
 ```
-3.radiusType （此参数可直接在当前div中当做自定义参数写入） 
+3.radiusType  
 书写格式： rediusType = "45%,55%"或rediusType = "55%"
 说明：1.'45%','55%' 为环形图 
      2.'55%'为饼图
 ```
 ```
-4.titletext （此参数可直接在当前div中当做自定义参数写入） 
+4.titletext  
 书写格式：titletext = "内容"
 说明：主标题
 ```
 ```
-5.subtitletext  （此参数可直接在当前div中当做自定义参数写入） 
+5.subtitletext   
 书写格式：subtitletext = "内容"
 说明：副标题 
 ```
 ```
-6.islegend （此参数可直接在当前div中当做自定义参数写入） 
+6.islegend  
 书写格式：islegend = "true"
 说明： 是否显示示例，默认值true
 ```
 ```
-7.istoolbox （此参数可直接在当前div中当做自定义参数写入） 
+7.istoolbox  
 书写格式：istoolbox = "true"
 说明：是否显示右上方的工具栏，默认值true
 ```
 ```
-8.istooltip （此参数可直接在当前div中当做自定义参数写入） 
+8.istooltip  
 书写格式：istooltip = "true"
 说明：是否显示提示框，默认值true
 ```
 ```
-9.orienttype （此参数可直接在当前div中当做自定义参数写入）
+9.orienttype  
 书写格式：orienttype = "vertical"
 说明： 图例的排序方式，默认为垂直显示(vertical),水平显示属性为horizontal   
 ```
 ```
-10.guideLineLength1 （此参数可直接在当前div中当做自定义参数写入）
+10.guideLineLength1  
 书写格式：guideLineLength1 = "5"
 说明：饼图引导线1 默认值为5
 ```
 ```
-11.guideLineLength2 （此参数可直接在当前div中当做自定义参数写入）
+11.guideLineLength2  
 书写格式：guideLineLength1 = "5"
 说明：饼图引导线2 默认值为5
 ```
 ```
-12.guideLineSmooth  （此参数可直接在当前div中当做自定义参数写入）
+12.guideLineSmooth   
 书写格式：guideLineSmooth = "0.1"
 说明：是否平滑视觉引导线，默认0.1，可以设置成 true 平滑显示，也可以设置为 0 到 1 的值，表示平滑程度。
 ```
 ```
-13.showLineAndName  （此参数可直接在当前div中当做自定义参数写入）
+13.showLineAndName   
 书写格式：showLineAndName = "false"
 说明：是否显示引导线和名字 默认值为true(显示)
 
 ```
 ```
-14.legendX（此参数可直接在当前div中当做自定义参数写入）
+14.legendX 
 书写格式：legendX= "right"
 说明：设置水平安放位置，默认'right'，可选值：'center' ¦ 'left' ¦ 'right' ¦ {number}（x坐标，单位px）
 
 ```
 ```
-15.legendY（此参数可直接在当前div中当做自定义参数写入）
+15.legendY 
 书写格式：legendY= "center"
 说明：设置垂直安放位置，默认'center'，可选值：'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px） 
 
 ```
 
-### 柱状图文档
+### 柱状图文档（ID为必传值）
 
 
 ``
-函数调用 EchartsBar（id,type）
+函数调用 EchartsBar（id,type,callback=null）
 id:divID
 type:选择图表类型,
+callback:echarts弹层 为一个函数 默认值为null
+
 type:类型
  竖向层叠柱状图 'verticalCascade'
  横向层叠柱状图 'transverseCascade'
@@ -154,75 +156,77 @@ type:类型
 
 ```
 ```
-2.titletext （此参数可直接在当前div中当做自定义参数写入） 
+2.titletext  
 书写格式：titletext = "内容"
 说明：主标题
 ```
 ```
-3.subtitletext  （此参数可直接在当前div中当做自定义参数写入） 
+3.subtitletext   
 书写格式：subtitletext = "内容"
 说明：副标题 
 ```
 ```
-4.islegend （此参数可直接在当前div中当做自定义参数写入） 
+4.islegend  
 书写格式：islegend = "true"
 说明： 是否显示示例，默认值true
 ```
 ```
-5.istoolbox （此参数可直接在当前div中当做自定义参数写入） 
+5.istoolbox  
 书写格式：istoolbox = "true"
 说明：是否显示右上方的工具栏，默认值true
 ```
 ```
-6.istooltip （此参数可直接在当前div中当做自定义参数写入） 
+6.istooltip  
 书写格式：istooltip = "true"
 说明：是否显示提示框，默认值true
 ```
 ```
-7.orienttype （此参数可直接在当前div中当做自定义参数写入）
+7.orienttype  
 书写格式：orienttype = "vertical"
 说明： 图例的排序方式，默认为垂直显示(vertical),水平显示属性为horizontal   
 ```
 ```
-8.barWidth（此参数可直接在当前div中当做自定义参数写入）
+8.barWidth 
 书写格式：barWidth= "30"
 说明：柱状图柱子宽度  默认30
 ```
 ```
-9.showXAxisLine（此参数可直接在当前div中当做自定义参数写入）
+9.showXAxisLine 
 书写格式：showXAxisLine= "true"
 说明：是否显示Y轴轴线,默认为true
 ```
 ```
-10.showYAxisLine（此参数可直接在当前div中当做自定义参数写入）
+10.showYAxisLine 
 书写格式：showYAxisLine= "true"
 说明：是否显示Y轴轴线,默认为true
 ```
 ```
-11.legendX（此参数可直接在当前div中当做自定义参数写入）
+11.legendX 
 书写格式：legendX= "right"
 说明：设置水平安放位置，默认'right'，可选值：'center' ¦ 'left' ¦ 'right' ¦ {number}（x坐标，单位px）
 
 ```
 ```
-12.legendY（此参数可直接在当前div中当做自定义参数写入）
+12.legendY 
 书写格式：legendY= "center"
 说明：设置垂直安放位置，默认'center'，可选值：'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px） 
 
 ```
 ```
-13.grid（此参数可直接在当前div中当做自定义参数写入）
+13.grid 
 书写格式：grid="10%,10%,20%,30%"
 说明：设置grid组件在容器中的位置
 
 ```
-### 折线图文档
+### 折线图文档（ID为必传值）
 
 
 ``
-函数调用 EchartsLine（id,type）
+函数调用 EchartsLine（id,type,callback=null）
 id:divID
 type:选择图表类型,
+callback:echarts弹层 为一个函数 默认值为null
+
 type:类型
  折线图 'line'
  多条折线图 'lines'
@@ -267,53 +271,53 @@ type:类型
 
 ```
 ```
-2.titletext （此参数可直接在当前div中当做自定义参数写入） 
+2.titletext  
 书写格式：titletext = "内容"
 说明：主标题
 ```
 ```
-3.subtitletext  （此参数可直接在当前div中当做自定义参数写入） 
+3.subtitletext   
 书写格式：subtitletext = "内容"
 说明：副标题 
 ```
 ```
-4.islegend （此参数可直接在当前div中当做自定义参数写入） 
+4.islegend  
 书写格式：islegend = "true"
 说明： 是否显示示例，默认值true
 ```
 ```
-5.istoolbox （此参数可直接在当前div中当做自定义参数写入） 
+5.istoolbox  
 书写格式：istoolbox = "true"
 说明：是否显示右上方的工具栏，默认值true
 ```
 ```
-6.istooltip （此参数可直接在当前div中当做自定义参数写入） 
+6.istooltip  
 书写格式：istooltip = "true"
 说明：是否显示提示框，默认值true
 ```
 ```
-7.orienttype （此参数可直接在当前div中当做自定义参数写入）
+7.orienttype  
 书写格式：orienttype = "vertical"
 说明： 图例的排序方式，默认为垂直显示(vertical),水平显示属性为horizontal   
 ```
 ```
-8.legendX（此参数可直接在当前div中当做自定义参数写入）
+8.legendX 
 书写格式：legendX= "center"
 说明：设置水平安放位置，默认'center'，可选值：'center' ¦ 'left' ¦ 'right' ¦ {number}（x坐标，单位px）
 ```
 ```
-9.legendY（此参数可直接在当前div中当做自定义参数写入）
+9.legendY 
 书写格式：legendY = "bottom"
 说明：设置垂直安放位置，默认'bottom'，可选值：'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px）
 ```
 ```
-10.grid（此参数可直接在当前div中当做自定义参数写入）
+10.grid 
 书写格式：grid="10%,10%,20%,30%"
 说明：设置grid组件在容器中的位置 默认值： "10%,10%,20%,30%"
 ```
-### 地图
+### 地图（ID为必传值）
 ``
-函数调用 getEchartsMap（id,cityName,callback）
+函数调用 getEchartsMap（id,cityName,callback=null）
 id:divID
 cityName:需要渲染的地图（省份或者全国） 
 callback:tooltip的回调函数，用来编写悬浮框的显示内容
@@ -346,22 +350,22 @@ callback:tooltip的回调函数，用来编写悬浮框的显示内容
 
 ```
 ```
-2.titletext （此参数可直接在当前div中当做自定义参数写入） 
+2.titletext  
 书写格式：titletext = "内容"
 说明：主标题
 ```
 ```
-3.subtitletext  （此参数可直接在当前div中当做自定义参数写入） 
+3.subtitletext   
 书写格式：subtitletext = "内容"
 说明：副标题 
 ```
 ```
-4.showDataRange（此参数可直接在当前div中当做自定义参数写入） 
+4.showDataRange 
 书写格式：showDataRange= "true"
 说明：  是否显示自定义分档，默认值true
 ```
 ```
-5.showProvinceNmae（此参数可直接在当前div中当做自定义参数写入） 
+5.showProvinceNmae 
 书写格式：showProvinceNmae= "true"
 说明：是否显示省份名称，默认值true
 ```
